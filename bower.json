@@ -26,6 +26,9 @@
     "visibilityjs": "~1.2.1",
     "moment": "~2.9.0",
     "highlightjs": "~8.4.0",
-    "angular-highlightjs": "~0.4.1"
+    "angular-highlightjs": "~0.4.1",
+    "angular-strap": "*",
+    "angular-smilies-master": "*",
+    "angular-sanitize": "*"  
   }
 }

@@ -11,7 +11,9 @@ angular.module('FileSync')
       socket.emit('viewer:new', login);
     });
 
-
+    socket.on('conversation',function(messages){
+	socket.emit('viewers', messages);
+    });
 
     socket.on('file:changed', function(filename, timestamp, content) {
       $timeout(function() {
@@ -31,8 +33,20 @@ angular.module('FileSync')
     });
 
     return {
+
+	sendMessage: function(msg){
+	socket.emit('message:new', msg); //appel la couche serveur
+      },
+      onMessagesUpdated: function(tchat) {
+        socket.on('message:updated', tchat);
+      },
+
       onViewersUpdated: function(f) {
         socket.on('viewers:updated', f);
+      },
+
+      onFileUploading: function(verifEmoteMsg){
+        socket.on('fileUploading',verifEmoteMsg);
       },
 
       onFileChanged: function(f) {

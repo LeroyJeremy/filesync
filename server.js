@@ -2,22 +2,67 @@
 
 var io = require('socket.io');
 var express = require('express');
+var multer = require('multer');
+var upload = multer({ dest: './public/components/angular-smilies-master/src/smilies' });
 var path = require('path');
-var app = express();
+
 var _ = require('lodash');
+
+var app = express();
 
 var logger = require('winston');
 var config = require('./config')(logger);
 
 app.use(express.static(path.resolve(__dirname, './public')));
 
-app.get('/', function(req, res) {
-  res.sendFile(__dirname + '/public/index.html');
+app.use(multer({ dest: './public/components/angular-smilies-master/src/smilies',
+    rename: function (fieldname, filename) {
+        return filename;
+    },
+    onFileUploadStart: function (file) {
+            var msg = '';
+            if(file.mimetype !== 'image/png'){
+                msg = 'Type de fichier non supporté';
+                console.log(msg);
+                return false;
+            }else{
+                msg =  'Transfère de ' + file.originalname + ' au serveur en cours';
+                console.log(msg);
+            }
+          //  socket.emit('fileUploading', msg);
+        },
+    onFileUploadComplete: function (file) {
+      var msg = '';
+      msg = 'Nouvelle emote dispo';
+      console.log(msg);
+      sio.emit('fileUploading', msg);
+        console.log(file.fieldname + ' uploaded to  ' + file.path)
+    }
+
+}));
+
+app.get('/',function(req,res){
+      res.sendFile(__dirname + "/index.html");
+});
+
+app.post('/api/photo',function(req,res){
+    upload(req,res,function(err) {
+        if(err) {
+            return res.end("Error uploading file.");
+        }
+        res.end("File is uploaded");
+    });
 });
 
 var server = app.listen(config.server.port, function() {
   logger.info('Server listening on %s', config.server.port);
 });
+
+function Message(nickname, msg) {
+  this.nickname = nickname;
+  this.msg = msg;
+  console.log('Message créé');
+}
 
 
 var sio = io(server);
@@ -62,6 +107,12 @@ sio.on('connection', function(socket) {
     socket.nickname = nickname;
     viewers.add(nickname);
     console.log('new viewer with nickname %s', nickname, viewers);
+  });
+
+  socket.on('message:new', function(message) {
+    var message = new Message(socket.nickname, message);
+    sio.emit('message:updated', message);
+    console.log('Nouveau message: '+ message);
   });
 
   socket.on('disconnect', function() {
