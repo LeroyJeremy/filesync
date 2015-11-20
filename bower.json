@@ -28,7 +28,6 @@
     "highlightjs": "~8.4.0",
     "angular-highlightjs": "~0.4.1",
     "angular-strap": "*",
-    "angular-smilies-master": "*",
     "angular-sanitize": "*"  
   }
 }
