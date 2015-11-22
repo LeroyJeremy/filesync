@@ -33,7 +33,7 @@ app.use(multer({ dest: './public/app/angular-smilies/src/smilies',
         },
     onFileUploadComplete: function (file) {
       var msg = '';
-      msg = 'Nouvelle emote dispo';
+      msg = 'Nouvel emote dispo l\'administrateur doit l\'ajouter vous serez déconnecter à l\'ajout ';
       console.log(msg);
       sio.emit('fileUploading', msg);
         console.log(file.fieldname + ' uploaded to  ' + file.path)
