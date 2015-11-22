@@ -3,7 +3,7 @@
 var io = require('socket.io');
 var express = require('express');
 var multer = require('multer');
-var upload = multer({ dest: './public/components/angular-smilies-master/src/smilies' });
+var upload = multer({ dest: './public/app/angular-smilies/src/smilies' });
 var path = require('path');
 
 var _ = require('lodash');
@@ -15,7 +15,7 @@ var config = require('./config')(logger);
 
 app.use(express.static(path.resolve(__dirname, './public')));
 
-app.use(multer({ dest: './public/components/angular-smilies-master/src/smilies',
+app.use(multer({ dest: './public/app/angular-smilies/src/smilies',
     rename: function (fieldname, filename) {
         return filename;
     },
