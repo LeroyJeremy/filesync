@@ -29,11 +29,10 @@ app.use(multer({ dest: './public/app/angular-smilies/src/smilies',
                 msg =  'Transfère de ' + file.originalname + ' au serveur en cours';
                 console.log(msg);
             }
-          //  socket.emit('fileUploading', msg);
         },
     onFileUploadComplete: function (file) {
       var msg = '';
-      msg = 'Nouvel emote dispo l\'administrateur doit l\'ajouter vous serez déconnecter à l\'ajout ';
+      msg = 'Nouvel emote disponible l\'administrateur doit l\'ajouter';
       console.log(msg);
       sio.emit('fileUploading', msg);
         console.log(file.fieldname + ' uploaded to  ' + file.path)
@@ -45,12 +44,12 @@ app.get('/',function(req,res){
       res.sendFile(__dirname + "/index.html");
 });
 
-app.post('/api/photo',function(req,res){
+app.post('/',function(req,res){
     upload(req,res,function(err) {
         if(err) {
-            return res.end("Error uploading file.");
+            res.end("Error uploading file.");
         }
-        res.end("File is uploaded");
+        res.end("The file has been download to the server if it meets the conditions.");
     });
 });
 
