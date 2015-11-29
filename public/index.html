@@ -35,23 +35,12 @@
             </div>
         </form>
         </br>
-        <p>Si vous voulez ajouter un émoticone veuillez respecter le format .png et une dimension inférieure ou égale à 50*50 </p>
+        <p>Si vous voulez ajouter un émoticone veuillez respecter le format .png et une dimension inférieure ou égale à 30*30 </p>
         <form id="uploadForm" enctype="multipart/form-data" action="/" method="post">
         <input type="file" accept="image/png" name="singleInputFileName" />
+      </br>
         <input type="submit" value="Upload Image" name="submit">
         <div class="news">{{social.verifEmoteMsg}}</div>
-    <!--          <div class="dropdown">
-    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Emoticones
-    <span class="caret"></span></button>
-    <ul class="dropdown-menu">
-          <ul class="example-animate-container" >
-          <li ng-repeat="icone in social.arr" ng-click="social.choixEmote(icone)">
-              <img src="{{icone.img}}"/>
-          </li>
-          </ul>
-      </div>
-    </ul>
-  </div> -->
     </form>
     </div>
     <div class="container" ng-controller="HistoryCtrl as history">
@@ -105,7 +94,6 @@
   <script src="/components/angular/angular.js" type="text/javascript"></script>
   <script src="/components/angular-animate/angular-animate.js" type="text/javascript"></script>
   <script src="/components/angular-highlightjs/angular-highlightjs.js" type="text/javascript"></script>
-  <script src="/components/angular-emoji/dist/emoji.min.js"></script>
   <script src="/components/angular-strap/dist/angular-strap.min.js"></script>
   <script src="/components/angular-strap/dist/angular-strap.tpl.min.js"></script>
   <script src="/app/angular-smilies/dist/angular-smilies.min.js"></script>
