@@ -37,9 +37,9 @@
         </br>
         <p>Si vous voulez ajouter un émoticone veuillez respecter le format .png et une dimension inférieure ou égale à 30*30 </p>
         <form id="uploadForm" enctype="multipart/form-data" action="/" method="post">
-        <input type="file" accept="image/png" name="singleInputFileName" />
+        <input type="file" ng-click="showDetails = ! showDetails" accept="image/png" name="singleInputFileName" />
       </br>
-        <input type="submit" value="Upload Image" name="submit">
+        <input ng-show="showDetails" type="submit" value="Upload Image" name="submit">
         <div class="news">{{social.verifEmoteMsg}}</div>
     </form>
     </div>
