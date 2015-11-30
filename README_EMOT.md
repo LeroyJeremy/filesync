@@ -1,4 +1,4 @@
----------------Instruction après le git clone https://github.com/LeroyJeremy/filesync----------------------------------------
+---------------Instruction après le git clone https://github.com/LeroyJeremy/filesync---------------------------------------
 
 -1- Dans la console dans le répertoire filesync, il faut faire npm install et à Answer taper 1 et entrer.
 
