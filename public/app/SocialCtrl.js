@@ -30,6 +30,7 @@ angular
 
     SocketIOService.onViewersUpdated(onViewersUpdated.bind(this));
 
+    //Permet d'envoyer un message aux clients lors d'un ajout d'émoticônes
     function onFileUploading(verifEmoteMsg) {
       this.verifEmoteMsg = verifEmoteMsg;
       $scope.$apply();

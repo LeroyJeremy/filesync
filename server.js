@@ -15,6 +15,7 @@ var config = require('./config')(logger);
 
 app.use(express.static(path.resolve(__dirname, './public')));
 
+//Partie qui concerne l'upload de l'image/Utilisation de Multer
 app.use(multer({ dest: './public/app/angular-smilies/src/smilies',
     rename: function (fieldname, filename) {
         return filename;
@@ -44,6 +45,7 @@ app.get('/',function(req,res){
       res.sendFile(__dirname + "/index.html");
 });
 
+//Methode utilisé suite à l'appuie sur le bouton upload.
 app.post('/',function(req,res){
     upload(req,res,function(err) {
         if(err) {
