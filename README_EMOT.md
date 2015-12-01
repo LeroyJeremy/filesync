@@ -4,7 +4,7 @@
 
 ---------------Instruction pour la partie émoticône personnalisée--------------------
 
--2- Dans la console, il faut faire sudo npm install dans le repertoire filesync/public/angular-smilies pour récuperer les modules nécessaires.
+-2- Dans la console, il faut faire sudo npm install dans le repertoire filesync/public/angular-smilies pour récuperer les modules nécessaires. Si la commande grunt n'es pas disponible faire sudo npm install -g grunt-cli dans ce même répertoire.
 
 -3- Après l'upload d'une ou des émoticône(s), pour les ajouter dans la liste des émoticônes pour les clients, il faut faire grunt dans la console dans le répertoire filesync/public/angular-smilies où le gruntfile.js se trouve.
 
